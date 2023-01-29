@@ -1,8 +1,11 @@
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Paper, Box, TextField, Button } from "@mui/material";
 // import Map from './Map'
 import axios from 'axios';
+
+// const CLIENT_ID = "ad3d2380ce5d1cc"
+// const SECRET = "cc304004088d1dd28c7425653b50590f2c8aa994"
 
 const AddMap = (props) => {
   const [mapName, setMapName] = useState("");
