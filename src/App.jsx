@@ -1,9 +1,10 @@
-import AddMap from "./AddMap"
-import Map from "./Map";
+import AddMap from "./components/AddMap"
+import Map from "./components/Map";
 import {
   createBrowserRouter,
   RouterProvider
 } from "react-router-dom";
+import "leaflet/dist/leaflet.css";
 
 const router = createBrowserRouter([
   {
@@ -11,7 +12,7 @@ const router = createBrowserRouter([
     element: <AddMap />,
   },
   {
-    path: "/map/:id",
+    path: "/:uuid",
     element: <Map />
   }
 ]);
