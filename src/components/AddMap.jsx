@@ -1,4 +1,3 @@
-import './AddMap.css';
 import { useState } from 'react';
 import { Paper, Box, TextField, Button } from "@mui/material";
 import axios from 'axios';
