@@ -1,5 +1,3 @@
-import { useState } from 'react'
-import { color } from '@mui/system'
 import { GithubPicker } from 'react-color'
 
 const ColourPicker = (props) => {

@@ -15,7 +15,7 @@ const Map = () => {
   let { uuid } = useParams();
 
   useEffect(() => {
-    axios.get(`http://localhost:3003/getMapPinsCategories?uuid=${uuid}`)
+    axios.get(`https://game-map-express.vercel.app/getMapPinsCategories?uuid=${uuid}`)
       .then((results) => {
         const { map, pins, categories } = results.data
 
