@@ -45,9 +45,10 @@ const AddMap = (props) => {
 
     onFileUpload()
       .then((res) => {
+        
         axios.post("https://game-map-express.vercel.app/addMap", {
           ...map,
-          imageLink: res.data.data.link
+          imageLink: res.data.image.url
         })
         // bookmark page prompt
       })
