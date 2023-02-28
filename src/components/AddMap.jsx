@@ -20,8 +20,8 @@ const AddMap = (props) => {
     // const clientId = "6d207e02198a847aa98d0a2a901485a5"
     // const auth = "Client-ID " + clientId;
 
-      // const formData = new FormData();
-      // formData.append("image", selectedFile);
+    // const formData = new FormData();
+    // formData.append("image", selectedFile);
 
     //   return axios.post("https://freeimage.host/api/1/upload", formData, {
     //     headers: {
@@ -31,12 +31,10 @@ const AddMap = (props) => {
     //   })
     // }
 
-      const formData = new FormData();
-      formData.append("image", selectedFile);
+    const formData = new FormData();
+    formData.append("image", selectedFile);
 
-      return axios.post("https://api.imgbb.com/1/upload?key=e54fcaa0f3a4ec262ef03745647f3cf1", formData)
-    }
-
+    return axios.post("https://api.imgbb.com/1/upload?key=e54fcaa0f3a4ec262ef03745647f3cf1", formData)
   }
 
   const handleSave = () => {
