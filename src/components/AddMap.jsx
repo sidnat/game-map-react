@@ -15,11 +15,13 @@ const AddMap = (props) => {
   const [selectedFile, setSelectedFile] = useState(null);
 
   const onFileUpload = async () => {
+    // e54fcaa0f3a4ec262ef03745647f3cf1
+
     // const clientId = "6d207e02198a847aa98d0a2a901485a5"
     // const auth = "Client-ID " + clientId;
 
-    //   const formData = new FormData();
-    //   formData.append("image", selectedFile);
+      // const formData = new FormData();
+      // formData.append("image", selectedFile);
 
     //   return axios.post("https://freeimage.host/api/1/upload", formData, {
     //     headers: {
@@ -29,12 +31,12 @@ const AddMap = (props) => {
     //   })
     // }
 
-    return axios.post("http://freeimage.host/api/1/upload", {
-      key: "6d207e02198a847aa98d0a2a901485a5",
-      action: "upload",
-      source: selectedFile,
-      format: "json",
-    })
+      const formData = new FormData();
+      formData.append("image", selectedFile);
+
+      return axios.post("https://api.imgbb.com/1/upload?key=e54fcaa0f3a4ec262ef03745647f3cf1", formData)
+    }
+
   }
 
   const handleSave = () => {
