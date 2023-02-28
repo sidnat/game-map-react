@@ -43,9 +43,11 @@ const AddMap = (props) => {
       creator,
     }
 
+    console.log(map)
+
     onFileUpload()
       .then((res) => {
-        
+
         axios.post("https://game-map-express.vercel.app/addMap", {
           ...map,
           imageLink: res.data.image.url
@@ -138,10 +140,12 @@ const AddMap = (props) => {
                             color="primary"
                             fullWidth
                             onClick={() => {
+                              console.log(selectedFile)
                               if (mapName && creator && selectedFile) {
                                 handleSave()
+                              } else {
+                                alert('Map details not saved')
                               }
-                              alert('Map details not saved')
                             }}
                           >Create Map</Button>
                         </Grid>
