@@ -4,6 +4,7 @@ import { AppBar, Paper, Box, Grid, TextField, Button, Card, CardContent, Typogra
 import './AddMap.css'
 import landingImage from '../assets/landingImage.png'
 import { v4 as uuidv4 } from 'uuid'
+import { json } from 'react-router-dom';
 // import ImgurClient from 'imgur';
 
 // const client = new ImgurClient({ clientId: `process.env.CLIENT_ID` });
@@ -14,17 +15,25 @@ const AddMap = (props) => {
   const [selectedFile, setSelectedFile] = useState(null);
 
   const onFileUpload = async () => {
-    const clientId = "0deb6da4072d4cd"
-    const auth = "Client-ID " + clientId;
+    // const clientId = "6d207e02198a847aa98d0a2a901485a5"
+    // const auth = "Client-ID " + clientId;
 
-    const formData = new FormData();
-    formData.append("image", selectedFile);
+    //   const formData = new FormData();
+    //   formData.append("image", selectedFile);
 
-    return axios.post("https://api.imgur.com/3/upload", formData, {
-      headers: {
-        "Authorization": auth,
-      },
-      datatype: "json",
+    //   return axios.post("https://freeimage.host/api/1/upload", formData, {
+    //     headers: {
+    //       "Authorization": auth,
+    //     },
+    //     datatype: "json",
+    //   })
+    // }
+
+    return axios.post("http://freeimage.host/api/1/upload", {
+      key: "6d207e02198a847aa98d0a2a901485a5",
+      action: "upload",
+      source: selectedFile,
+      format: "json",
     })
   }
 
