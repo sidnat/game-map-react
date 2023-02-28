@@ -4,7 +4,6 @@ import { AppBar, Paper, Box, Grid, TextField, Button, Card, CardContent, Typogra
 import './AddMap.css'
 import landingImage from '../assets/landingImage.png'
 import { v4 as uuidv4 } from 'uuid'
-import { json } from 'react-router-dom';
 // import ImgurClient from 'imgur';
 
 // const client = new ImgurClient({ clientId: `process.env.CLIENT_ID` });
