@@ -1,73 +1,46 @@
 import { useState } from 'react'
-import reactCSS from 'reactcss'
-import { SketchPicker } from 'react-color'
+import { color } from '@mui/system'
+import { GithubPicker } from 'react-color'
 
 const ColourPicker = (props) => {
-    const [state, setState] = useState({
-        displayColorPicker: false,
-        color: {
-          r: '241',
-          g: '112',
-          b: '19',
-          a: '1',
-        },
-      })
+  // implement onSwatchHover to show colour name, not just hex code
+  // const colourName = (hexCode) => {
+  //   if (hexCode === '#930000') {
+  //     console.log('red')
+  //     return 'Red'
+  //   }
+  // }
 
-    const styles = reactCSS({
-        'default': {
-          color: {
-            width: '36px',
-            height: '14px',
-            borderRadius: '2px',
-            background: `rgba(${ state.color.r }, ${ state.color.g }, ${ state.color.b }, ${ state.color.a })`,
-          },
-          swatch: {
-            padding: '5px',
-            background: '#fff',
-            borderRadius: '1px',
-            boxShadow: '0 0 0 1px rgba(0,0,0,.1)',
-            display: 'inline-block',
-            cursor: 'pointer',
-          },
-          popover: {
-            position: 'absolute',
-            zIndex: '2',
-          },
-          cover: {
-            position: 'fixed',
-            top: '0px',
-            right: '0px',
-            bottom: '0px',
-            left: '0px',
-          },
-        },
-      });
+  const colors = ['#930000', '#c92a2a', '#fccb00', '#37d67a', '#008b02', '#1273de', '#006b76', '#e91e63', '#fa28ff', '#cec6ba', '#6b1614', '#db3e00', '#ff9800', '#8bc34a', '#23482f', '#1a237e', '#5300eb', '#9c27b0', '#613a00', '#2a2d2f']
 
-      const handleClick = () => {
-        setState((prevState) => ({...prevState, displayColorPicker: !prevState.displayColorPicker }))
-      };
-    
-      const handleClose = () => {
-        setState((prevState) => ({...prevState, displayColorPicker: false }))
-      };
-    
-      const handleChange = (color) => {
-        // console.log(color)
-        setState((prevState) => ({...prevState, color: color.rgb }))
-      };
-
-      return (
-        <div>
-          <div style={ styles.swatch } onClick={ handleClick }>
-            <div style={ styles.color } />
-          </div>
-          { state.displayColorPicker ? <div style={ styles.popover }>
-            <div style={ styles.cover } onClick={ handleClose }/>
-            <SketchPicker color={ state.color } onChange={ handleChange } />
-          </div> : null }
-  
-        </div>
-      )
+  return (
+    <GithubPicker colors={colors} width="250px" onSwatchHover={(colour, event) => {
+      // console.log(colour)
+      // console.log(event)
+      // colourName(colour.hex)
+    }} onChangeComplete={props.onColourChange}/>
+  )
 }
 
 export default ColourPicker
+
+// brown 613a00
+// red-dark 6b1614
+// red 930000
+// red-light c92a2a
+// orange db3e00
+// orange-light ff9800
+// yellow fccb00
+// green-dark 23482f
+// green 008b02
+// green-light 8bc34a
+// green-neon 37d67a
+// blue-dark 1a237e
+// blue-teal 006b76
+// blue 1273de
+// pink e91e63
+// pink-neon fa28ff
+// purple-light 9c27b0
+// purple 5300eb
+// black 2a2d2f
+// white cec6ba
