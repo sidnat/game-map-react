@@ -48,7 +48,8 @@ const AddMap = (props) => {
     onFileUpload()
       .then((res) => {
 
-        console.log(res.data.image.url)
+        console.log('resdata', res.data)
+        console.log('resurl', res.data.image.url)
 
         axios.post("https://game-map-express.vercel.app/addMap", {
           ...map,
