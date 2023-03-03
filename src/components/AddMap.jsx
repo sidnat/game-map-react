@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axios from 'axios';
+import axios from '../utils/axios';
 import { AppBar, Paper, Box, Grid, TextField, Button, Card, CardContent, Typography } from '@mui/material';
 import './AddMap.css'
 import landingImage from '../assets/landingImage.png'
@@ -30,10 +30,22 @@ const AddMap = (props) => {
     //   })
     // }
 
-    const formData = new FormData();
-    formData.append("image", selectedFile);
+    // const formData = new FormData();
+    // formData.append("image", selectedFile);
 
-    return axios.post("https://api.imgbb.com/1/upload?key=e54fcaa0f3a4ec262ef03745647f3cf1", formData)
+    // console.log(selectedFile)
+    // debugger;
+
+    // return axios.post("https://api.imgbb.com/1/upload?key=e54fcaa0f3a4ec262ef03745647f3cf1", formData)
+
+    const formData = new FormData();
+    formData.append("media", selectedFile);
+    formData.append("key", "0000334f0bdb447fc1efc3a8efa304f7")
+
+    console.log(selectedFile)
+    debugger;
+
+    return axios.post("https://thumbsnap.com/api/upload", formData)
   }
 
   const handleSave = () => {
@@ -49,9 +61,9 @@ const AddMap = (props) => {
       .then((res) => {
 
         console.log('resdata', res.data)
-        console.log('resurl', res.data.image.url)
+        console.log('resurl', res.data.url)
 
-        axios.post("https://game-map-express.vercel.app/addMap", {
+        axios.post("addMap", {
           ...map,
           imageLink: res.data.image.url
         })

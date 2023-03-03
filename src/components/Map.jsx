@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../utils/axios";
 import { useParams } from "react-router-dom";
 import { MapContainer } from "react-leaflet";
 import { CRS } from "leaflet";
@@ -15,7 +15,7 @@ const Map = () => {
   let { uuid } = useParams();
 
   useEffect(() => {
-    axios.get(`https://game-map-express.vercel.app/getMapPinsCategories?uuid=${uuid}`)
+    axios.get(`getMapPinsCategories?uuid=${uuid}`)
       .then((results) => {
         const { map, pins, categories } = results.data
 
