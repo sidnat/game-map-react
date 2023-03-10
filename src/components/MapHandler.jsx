@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import { useMap, useMapEvent } from "react-leaflet/hooks";
-import axios from "../utils/axios";
+import instance from "../utils/axios";
 import moment from "moment";
 import { v4 as uuidv4 } from 'uuid'
 import Marker from "./Marker";
@@ -49,7 +49,7 @@ const MapHandler = (props) => {
       // screenshot
     }
 
-    axios.post('addPin', {
+    instance.post('addPin', {
       ...pin,
       category: category.id
     })
@@ -87,7 +87,7 @@ const MapHandler = (props) => {
 
     for (let i = 0; i < pins.length; i++) {
       if (pins[i].id === id) {
-        axios.put('editPin', {
+        instance.put('editPin', {
           ...pin,
           category: category.id
         })
@@ -157,7 +157,7 @@ const MapHandler = (props) => {
   const deletePin = (id) => {
     for (let i = 0; i < pins.length; i++) {
       if (pins[i].id === id) {
-        axios.delete(`deletePin?id=${id}`)
+        instance.delete(`deletePin?id=${id}`)
           .then((res) => {
             const newPins = [...pins]
             newPins.splice(i, 1)
@@ -174,7 +174,7 @@ const MapHandler = (props) => {
       colour: colour
     }
 
-    await axios.post('addCategory', category)
+    await instance.post('addCategory', category)
       .then(() => {
         // console.log('cat', categories)
         setCategories((prevState) => [...prevState, category])
@@ -185,7 +185,7 @@ const MapHandler = (props) => {
   }
 
   const deleteCategory = (id) => {
-    axios.delete(`deleteCategory?id=${id}`)
+    instance.delete(`deleteCategory?id=${id}`)
       .then((res) => {
         setCategories(categories.filter(elem => elem.id !== id))
       })
